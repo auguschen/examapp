@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <classPathEntry location="/Users/augus/maven_repository/maven/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar" />
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:mysql://iot.darktech.org:50099/spring?useSSL=false" driverClass="com.mysql.mysql.Driver" password="gnirps" userId="spring" />
+    <javaModelGenerator targetPackage="com.airchina.xn.model" targetProject="examapp" />
+    <sqlMapGenerator targetPackage="com.airchina.xn.mapping" targetProject="examapp" />
+    <javaClientGenerator targetPackage="com.airchina.xn.dao" targetProject="examapp" type="XMLMAPPER" />
+    <table schema="spring" tableName="books">
+      
+    </table>
+  </context>
+</generatorConfiguration>
