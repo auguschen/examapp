@@ -10,6 +10,10 @@ public class Book {
 	private double price;
 	private Date publishDate;
 	
+	public Book(){
+		
+	}
+	
 	public Book(int id, String title, double price, Date publishDate) {
         this.id = id;
         this.title = title;

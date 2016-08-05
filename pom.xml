@@ -6,7 +6,7 @@
   <artifactId>examapp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-
+  
   <name>examapp</name>
   <url>http://maven.apache.org</url>
 
@@ -124,4 +124,13 @@
 		    <version>1.3.1</version>
 		</dependency>
   </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.mortbay.jetty</groupId>
+  			<artifactId>jetty-maven-plugin</artifactId>
+  			<version>8.1.16.v20140903</version>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>
