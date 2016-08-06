@@ -23,7 +23,7 @@ public class BookController {
 	public String Index(HttpServletRequest request, Model model){
 		List<Book> booklist = booksservice.getAllBooks();
 		model.addAttribute("books", booklist);
-		model.addAttribute("message","Running Controller");
+		model.addAttribute("message","Books in Database");
 		return "books";
 	}
 
