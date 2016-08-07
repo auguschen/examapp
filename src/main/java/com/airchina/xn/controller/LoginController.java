@@ -19,6 +19,9 @@ public class LoginController {
 		return new ModelAndView("/login");
 	}
 	
+	/**  
+	 *  处理登陆配置  
+	 */  
     @RequestMapping(value = "/submit", method = RequestMethod.POST)  
     public ModelAndView submit(String username, String password) {  
         User user = new User("shiro", "123456");  
@@ -35,7 +38,7 @@ public class LoginController {
             e.printStackTrace();  
         }  
   
-        return new ModelAndView("redirect:/member/index.htm");  
+        return new ModelAndView("redirect:/member/index.jsp");  
     }  
 	
 }

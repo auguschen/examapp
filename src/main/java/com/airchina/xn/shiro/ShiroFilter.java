@@ -30,6 +30,7 @@ public class ShiroFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
+		System.out.println("启用filter........");
         HttpServletRequest httpRequest = (HttpServletRequest) arg0;  
         HttpServletResponse httpResponse = (HttpServletResponse) arg1;  
         Principal principal = httpRequest.getUserPrincipal();  

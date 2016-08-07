@@ -2,24 +2,16 @@ package com.airchina.xn.entities;
 
 public class Role {
 
-	private String role;
 	private String name;
 	
 	public Role(){
 		
 	}
 	
-	public Role(String role){
-		this.role = role;
+	public Role(String name){
+		this.name = name;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public String getName() {
 		return name;
