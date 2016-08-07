@@ -9,7 +9,7 @@ import com.airchina.xn.dao.BookDAO;
 import com.airchina.xn.entities.Book;
 import com.airchina.xn.service.BooksService;
 
-@Service
+@Service("booksService")
 public class BooksServiceImpl implements BooksService {
 
 	@Autowired

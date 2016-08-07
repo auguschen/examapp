@@ -4,6 +4,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,15 +16,16 @@ import com.airchina.xn.entities.User;
 public class LoginController {
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public ModelAndView login(){
-		return new ModelAndView("/login");
+	public String loginForm(Model model){
+		return "/login";
 	}
 	
 	/**  
 	 *  处理登陆配置  
 	 */  
-    @RequestMapping(value = "/submit", method = RequestMethod.POST)  
-    public ModelAndView submit(String username, String password) {  
+/*
+	@RequestMapping(value = "/login", method = RequestMethod.POST)  
+    public String login(String username, String password) {  
         User user = new User("shiro", "123456");  
         user.setRole(new Role("member"));  
         try {  
@@ -38,7 +40,7 @@ public class LoginController {
             e.printStackTrace();  
         }  
   
-        return new ModelAndView("redirect:/member/index.jsp");  
+        return "redirect:/member/index";  
     }  
-	
+*/	
 }

@@ -15,7 +15,10 @@
   <context-param>
     <description>设置Spring加载时的配置文件</description>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>
+      classpath:applicationContext.xml
+      ,classpath:applicationContext-shiro.xml
+    </param-value>
   </context-param>
 
 	<!-- 防止Spring内存溢出监听器 -->  
@@ -70,14 +73,14 @@
   </filter-mapping>
 
 	<!-- 加载文件 -->  
-
+<!-- 
 	<context-param>  
 	    <param-name>contextConfigLocation</param-name>  
 	    <param-value>  
 	        classpath:applicationContext-shiro.xml  
 	    </param-value>  
 	</context-param> 
-	
+ -->	
   <!-- Shiro Security filter -->
 
   <filter>

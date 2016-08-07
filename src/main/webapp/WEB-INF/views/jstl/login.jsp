@@ -7,6 +7,6 @@
 <title>Login Page</title>
 </head>
 <body>
-Login Page
+    <h1>登录页面----${message }</h1>  
 </body>
 </html>

@@ -23,6 +23,16 @@
 <div>${ message }</div>
 	<div>
 		<table border="1">
+      <tr>
+        <td>序号
+        </td>
+        <td>书名
+        </td>
+        <td>价格
+        </td>
+        <td>出版日期
+        </td>
+      </tr>
 		<c:forEach var="data" items="${ books }">
 			<tr>
 				<td>
