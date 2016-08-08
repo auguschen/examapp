@@ -2,12 +2,12 @@ package com.airchina.xn.entities;
 
 import java.util.Date;
 
-public class User {
+public class RolePermission {
     private Integer id;
 
-    private String username;
+    private Integer roleId;
 
-    private String password;
+    private Integer permissionId;
 
     private Date createTime;
 
@@ -19,20 +19,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getPermissionId() {
+        return permissionId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPermissionId(Integer permissionId) {
+        this.permissionId = permissionId;
     }
 
     public Date getCreateTime() {

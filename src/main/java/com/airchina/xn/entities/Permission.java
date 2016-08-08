@@ -2,12 +2,12 @@ package com.airchina.xn.entities;
 
 import java.util.Date;
 
-public class Role {
+public class Permission {
     private Integer id;
 
-    private String roleName;
+    private String permissionName;
 
-    private String roleSign;
+    private String permissionSign;
 
     private String description;
 
@@ -21,20 +21,20 @@ public class Role {
         this.id = id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getPermissionName() {
+        return permissionName;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
     }
 
-    public String getRoleSign() {
-        return roleSign;
+    public String getPermissionSign() {
+        return permissionSign;
     }
 
-    public void setRoleSign(String roleSign) {
-        this.roleSign = roleSign;
+    public void setPermissionSign(String permissionSign) {
+        this.permissionSign = permissionSign;
     }
 
     public String getDescription() {

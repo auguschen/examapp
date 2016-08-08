@@ -16,14 +16,20 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.airchina.xn.entities.Role;
 import com.airchina.xn.entities.User;
+import com.airchina.xn.service.UserService;
 
 /**  
  * 该类从principals中取得用户名称进行匹配,在principals中默认保存了当前登陆人的用户名称,从而将该用户的角色加入到作用域中;  
  */ 
 public class ShiroRealm extends AuthorizingRealm {
+	
+	@Autowired
+	private UserService userservice;
+	
 	//登陆第二步,通过用户信息将其权限和角色加入作用域中,达到验证的功能  
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
@@ -35,9 +41,12 @@ public class ShiroRealm extends AuthorizingRealm {
         List<String> roles = new ArrayList<String>();  
         // 通过当前登陆用户的姓名查找到相应的用户的所有信息
         // 简单默认一个用户与角色，实际项目应User user = userService.getByAccount(name);  
+        User user = userservice.getUserbyuserName(name);
+/*
         User user = new User("shiro", "123456");  
         Role role = new Role("member");  
         user.setRole(role);  
+*/
 /*
         User user = UserService.getUserByName(name);  
         Role role = user.getRole();  
@@ -51,10 +60,10 @@ public class ShiroRealm extends AuthorizingRealm {
             throw new AuthorizationException();  
         }  
 */        
-        if (user.getName().equals(name)) {  
-            if (user.getRole() != null) {  
-                roles.add(user.getRole().getName());  
-            }  
+        if (user.getUsername().equals(name)) {  
+//            if (user.getRole() != null) {  
+//                roles.add(user.getRole().getName());  
+//            }  
         } else {  
             throw new AuthorizationException();  
         }  
@@ -76,13 +85,14 @@ public class ShiroRealm extends AuthorizingRealm {
 	       	System.out.println("token is :" + token);  
 	        // 简单默认一个用户,实际项目应User user = userService.getByAccount(token.getUsername());  
 	        // 下面通过读取token中的数据重新封装了一个user 
-	        User user = new User("shiro", "123456");  
+	       	User user = userservice.getUserbyuserName(token.getUsername());
+//	        User user = new User("shiro", "123456");  
 	        if (user == null) {  
 	            throw new AuthorizationException();  
 	        }  
 	        SimpleAuthenticationInfo info = null;  
-	        if (user.getName().equals(token.getUsername())) {  
-	            info = new SimpleAuthenticationInfo(user.getName(), user.getPassword(), getName());  
+	        if (user.getUsername().equals(token.getUsername())) {  
+	            info = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());  
 	        }  
 	        //将该User村放入session作用域中  
 	        //this.setSession("user", user); 

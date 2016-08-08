@@ -15,35 +15,45 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.airchina.xn.dao.UserMapper;
 import com.airchina.xn.entities.Role;
 import com.airchina.xn.entities.User;
+import com.airchina.xn.service.UserService;
 
 public class ShiroFilter implements Filter {
 
+	@Autowired
+	private UserService userservice;
+	
 	@Override
 	public void destroy() {
 
 	}
 
 	@Override
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest request, ServletResponse respone, FilterChain filterchain)
 			throws IOException, ServletException {
 		System.out.println("启用filter........");
-        HttpServletRequest httpRequest = (HttpServletRequest) arg0;  
-        HttpServletResponse httpResponse = (HttpServletResponse) arg1;  
+        HttpServletRequest httpRequest = (HttpServletRequest) request;  
+        HttpServletResponse httpResponse = (HttpServletResponse) respone;  
         Principal principal = httpRequest.getUserPrincipal();  
   
         if (principal != null) {  
             Subject subjects = SecurityUtils.getSubject();  
             // 为了简单，这里初始化一个用户。实际项目项目中应该去数据库里通过名字取用户：  
             // 例如：User user = userService.getByAccount(principal.getName());  
+            
+            User user = userservice.getUserbyuserName(principal.getName());
+/*
             User user = new User();  
             user.setName("shiro");  
             user.setPassword("123456");  
             user.setRole(new Role("member"));  
-            if (user.getName().equals(principal.getName())) {  
-                UsernamePasswordToken token = new UsernamePasswordToken(user.getName(), user  
+*/
+            if (user.getUsername().equals(principal.getName())) {  
+                UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user  
                         .getPassword());  
                 subjects = SecurityUtils.getSubject();  
                 subjects.login(token);  
@@ -55,7 +65,7 @@ public class ShiroFilter implements Filter {
                 }  
             }  
         }  
-        arg2.doFilter(httpRequest, httpResponse);  
+        filterchain.doFilter(httpRequest, httpResponse);  
 	}
 
 	@Override

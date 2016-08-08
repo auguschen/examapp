@@ -5,24 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.airchina.xn.dao.BookDAO;
-import com.airchina.xn.entities.Book;
+import com.airchina.xn.dao.BooksMapper;
+import com.airchina.xn.entities.Books;
 import com.airchina.xn.service.BooksService;
 
 @Service("booksService")
 public class BooksServiceImpl implements BooksService {
 
 	@Autowired
-	private BookDAO bookdao;
+	private BooksMapper booksmapper;
 	
 	@Override
-	public List<Book> getAllBooks() {
-		return bookdao.getAllBooks();
+	public List<Books> getAllBooks() {
+		return booksmapper.selectAll();
 	}
 
 	@Override
-	public Book getBookById(Integer id) {
-		return bookdao.getBookById(id);
+	public Books getBookById(Integer id) {
+		return booksmapper.selectByPrimaryKey(id);
 	}
 
 }

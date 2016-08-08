@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.airchina.xn.dao.BooktypesMapper">
+  <resultMap id="BaseResultMap" type="com.airchina.xn.entities.Booktypes">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="typeName" jdbcType="VARCHAR" property="typename" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from booktypes
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.airchina.xn.entities.Booktypes">
+    insert into booktypes (id, typeName)
+    values (#{id,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.airchina.xn.entities.Booktypes">
+    update booktypes
+    set typeName = #{typename,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, typeName
+    from booktypes
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, typeName
+    from booktypes
+  </select>
+</mapper>

@@ -45,7 +45,7 @@
 				${data.price }
 				</td>
 				<td>
-				${data.publishDate }
+				${data.publishdate }
 				</td>
 			</tr>
 		</c:forEach>
