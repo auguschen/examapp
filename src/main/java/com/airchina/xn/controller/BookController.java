@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.airchina.xn.entities.Book;
 import com.airchina.xn.service.BooksService;
@@ -19,7 +20,7 @@ public class BookController {
 	@Autowired
 	private BooksService booksservice;
 	
-	@RequestMapping("/index")
+	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String Index(HttpServletRequest request, Model model){
 		List<Book> booklist = booksservice.getAllBooks();
 		model.addAttribute("books", booklist);
