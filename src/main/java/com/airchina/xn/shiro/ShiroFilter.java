@@ -53,8 +53,7 @@ public class ShiroFilter implements Filter {
             user.setRole(new Role("member"));  
 */
             if (user.getUsername().equals(principal.getName())) {  
-                UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user  
-                        .getPassword());  
+                UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());  
                 subjects = SecurityUtils.getSubject();  
                 subjects.login(token);  
                 subjects.getSession();  

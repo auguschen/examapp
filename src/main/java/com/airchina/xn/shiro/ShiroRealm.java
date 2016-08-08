@@ -77,11 +77,10 @@ public class ShiroRealm extends AuthorizingRealm {
      * 验证当前登录的Subject  
      * @see 经测试:本例中该方法的调用时机为LoginController.login()方法中执行Subject.login()时  
      */  
-	@SuppressWarnings("unused")
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authToken) throws AuthenticationException {
 			// 登陆后的操作,此处为登陆有的第一步操作,从LoginController.login中调用了此处的token
-	       	UsernamePasswordToken token = (UsernamePasswordToken) arg0;  
+	       	UsernamePasswordToken token = (UsernamePasswordToken) authToken;  
 	       	System.out.println("token is :" + token);  
 	        // 简单默认一个用户,实际项目应User user = userService.getByAccount(token.getUsername());  
 	        // 下面通过读取token中的数据重新封装了一个user 
