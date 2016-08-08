@@ -6,7 +6,6 @@
   <artifactId>examapp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  
   <name>examapp</name>
   <url>http://maven.apache.org</url>
 
