@@ -20,17 +20,17 @@ public class LoginController {
 	private UserService userservice;
 	
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value="login", method = RequestMethod.GET)
 	public String loginForm(Model model){
 		model.addAttribute("message", "欢迎登陆");
-		return "/login";
+		return "login";
 	}
 	
 	/**  
 	 *  处理登陆配置  
 	 */  
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)  
+	@RequestMapping(value = "login", method = RequestMethod.POST)  
     public String login(String username, String password) {  
         User user = userservice.getUserbyuserName(username); 
 //        user.setRole(new Role("member"));  
@@ -46,7 +46,7 @@ public class LoginController {
             e.printStackTrace();  
         }  
   
-        return "redirect:/member/index";  
+        return "redirect:books/index";  
     }  
 	
 }

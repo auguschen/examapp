@@ -31,6 +31,30 @@ public class UserServiceImpl implements UserService {
 		return usermapper.selectByUserName(username);
 	}
 
+	public UserMapper getUsermapper() {
+		return usermapper;
+	}
+
+	public void setUsermapper(UserMapper usermapper) {
+		this.usermapper = usermapper;
+	}
+
+	public UserRolesMapper getUserrolesmapper() {
+		return userrolesmapper;
+	}
+
+	public void setUserrolesmapper(UserRolesMapper userrolesmapper) {
+		this.userrolesmapper = userrolesmapper;
+	}
+
+	public UserRolesPermissionsMapper getUserrolespermissionsmapper() {
+		return userrolespermissionsmapper;
+	}
+
+	public void setUserrolespermissionsmapper(UserRolesPermissionsMapper userrolespermissionsmapper) {
+		this.userrolespermissionsmapper = userrolespermissionsmapper;
+	}
+
 	@Override
 	public User getUserbyId(Integer id) {
 		return usermapper.selectByPrimaryKey(id);
