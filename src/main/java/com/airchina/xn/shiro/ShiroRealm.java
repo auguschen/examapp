@@ -1,6 +1,7 @@
 package com.airchina.xn.shiro;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.shiro.SecurityUtils;
@@ -18,7 +19,6 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.airchina.xn.entities.Role;
 import com.airchina.xn.entities.User;
 import com.airchina.xn.service.UserService;
 
@@ -32,44 +32,31 @@ public class ShiroRealm extends AuthorizingRealm {
 	
 	//登陆第二步,通过用户信息将其权限和角色加入作用域中,达到验证的功能  
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // 根据用户配置用户与权限  
-        if (arg0 == null) {  
+        if (principals == null) {  
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");  
         }  
-        String name = (String) getAvailablePrincipal(arg0);  
-        List<String> roles = new ArrayList<String>();  
+        String name = (String) getAvailablePrincipal(principals);  
+        List<String> roles = new ArrayList<String>();
+        List<String> permissions = new ArrayList<String>();
         // 通过当前登陆用户的姓名查找到相应的用户的所有信息
         // 简单默认一个用户与角色，实际项目应User user = userService.getByAccount(name);  
         User user = userservice.getUserbyuserName(name);
-/*
-        User user = new User("shiro", "123456");  
-        Role role = new Role("member");  
-        user.setRole(role);  
-*/
-/*
-        User user = UserService.getUserByName(name);  
-        Role role = user.getRole();  
-        if (user.getName().equals(name)) {  
-            if (user.getRole() != null) {  
-                // 装配用户的角色和权限 delete  
-                roles.add(user.getRole().getName());  
-                permissions.add("delete");  
-            }  
-        } else {  
-            throw new AuthorizationException();  
-        }  
-*/        
         if (user.getUsername().equals(name)) {  
+        	// 装配用户的角色和权限
 //            if (user.getRole() != null) {  
 //                roles.add(user.getRole().getName());  
 //            }  
+        	roles.addAll(userservice.getUserRolesStringbyuserid(user.getId()));
+        	permissions.addAll(userservice.getUserPermissonsStringByuserid(user.getId()));
         } else {  
             throw new AuthorizationException();  
         }  
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();  
         // 增加角色  
-        info.addRoles(roles);  
+        info.addRoles(roles);
+        info.addStringPermissions(permissions);
         return info;  
 	}
 

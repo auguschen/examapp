@@ -17,8 +17,6 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.airchina.xn.dao.UserMapper;
-import com.airchina.xn.entities.Role;
 import com.airchina.xn.entities.User;
 import com.airchina.xn.service.UserService;
 
@@ -46,12 +44,6 @@ public class ShiroFilter implements Filter {
             // 例如：User user = userService.getByAccount(principal.getName());  
             
             User user = userservice.getUserbyuserName(principal.getName());
-/*
-            User user = new User();  
-            user.setName("shiro");  
-            user.setPassword("123456");  
-            user.setRole(new Role("member"));  
-*/
             if (user.getUsername().equals(principal.getName())) {  
                 UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());  
                 subjects = SecurityUtils.getSubject();  
@@ -68,7 +60,7 @@ public class ShiroFilter implements Filter {
 	}
 
 	@Override
-	public void init(FilterConfig arg0) throws ServletException {
+	public void init(FilterConfig filters) throws ServletException {
 
 	}
 

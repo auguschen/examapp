@@ -7,11 +7,20 @@
     <commentGenerator>
       <property name="suppressAllComments" value="true"/>
     </commentGenerator>
-
+<!-- 
     <jdbcConnection connectionURL="jdbc:mysql://iot.darktech.org:50099/spring?useSSL=false" driverClass="com.mysql.jdbc.Driver" password="gnirps" userId="spring" />
+ -->
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/spring?useSSL=false" driverClass="com.mysql.jdbc.Driver" password="gnirps" userId="spring" />
     <javaModelGenerator targetPackage="com.airchina.xn.entities" targetProject="examapp" />
     <sqlMapGenerator targetPackage="com.airchina.xn.mapping" targetProject="examapp" />
     <javaClientGenerator targetPackage="com.airchina.xn.dao" targetProject="examapp" type="XMLMAPPER" />
+
+    <table schema="spring" tableName="user_roles">     
+    </table>
+    <table schema="spring" tableName="user_roles_permissions">     
+    </table>
+
+<!-- 
     <table schema="spring" tableName="user">     
     </table>
     <table schema="spring" tableName="user_role">     
@@ -26,5 +35,6 @@
     </table>
     <table schema="spring" tableName="booktypes">     
     </table>
+ -->
   </context>
 </generatorConfiguration>

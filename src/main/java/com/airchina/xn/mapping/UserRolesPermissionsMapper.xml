@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.airchina.xn.dao.UserRolesPermissionsMapper">
+  <resultMap id="BaseResultMap" type="com.airchina.xn.entities.UserRolesPermissions">
+    <result column="permission_id" jdbcType="INTEGER" property="permissionId" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+    <result column="permission_sign" jdbcType="VARCHAR" property="permissionSign" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+  </resultMap>
+  <insert id="insert" parameterType="com.airchina.xn.entities.UserRolesPermissions">
+    insert into user_roles_permissions (permission_id, permission_name, permission_sign, 
+      description, role_id, user_id, 
+      username)
+    values (#{permissionId,jdbcType=INTEGER}, #{permissionName,jdbcType=VARCHAR}, #{permissionSign,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select permission_id, permission_name, permission_sign, description, role_id, user_id, 
+    username
+    from user_roles_permissions
+  </select>
+  
+  <select id="selectByUserID" resultMap="BaseResultMap">
+    select permission_id, permission_name, permission_sign, description, role_id, user_id, 
+    username
+    from user_roles_permissions
+    where user_id = #{user_id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByUserName" resultMap="BaseResultMap">
+    select permission_id, permission_name, permission_sign, description, role_id, user_id, 
+    username
+    from user_roles_permissions
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

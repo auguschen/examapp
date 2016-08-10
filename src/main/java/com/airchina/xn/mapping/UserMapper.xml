@@ -36,6 +36,6 @@
   <select id="selectByUserName" resultMap="BaseResultMap">
     select id, username, password, create_time
     from user
-    where username = ${username,jdbcType=VARCHA}
+    where username = ${username,jdbcType=VARCHAR}
   </select>
 </mapper>
